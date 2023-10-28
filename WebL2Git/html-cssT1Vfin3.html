@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>История веба - WWW</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+  <style>
+    .normal {
+      background-color: #fff; 
+      color: #000; 
+      font-weight: normal; 
+    }
+    .alternative {
+      background-color: rgb(145, 32, 153); 
+      color: #fff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<div><img src="image.jpg" name="picture" id="img1" style="position:absolute; top:200px; left: 600px; width:150; height:150; z-index: 0; "></div>
+<div><img src="image1.jpg" name="picture1" id="img3"  style="position:absolute; top:200px; left: 650px; width:150; height:150; z-index: 1; "></div>
+<div><img src="image2.jpg" name="picture2" id="img2" style="position:absolute; top:200px; left: 700px; width:150; height:150; z-index: 2; "></div>
+<div><INPUT type="button" value="Скрыть среднюю" style="position:absolute; top: 450px; left: 400px; width: 70; height: 30; background-color: rgb(153, 153, 153);" OnClick="picture1.style.visibility='hidden';"></div>
+<div><INPUT type="button" value="Показать среднюю" style="position:absolute; top: 450px; left: 600px; width: 70; height: 30; background-color: rgb(153, 153, 153);" OnClick="picture1.style.visibility='visible'"></div>
+<div><INPUT type="button" value="Сменить нижний и верхний слой" style="position:absolute; top: 450px; left: 800px; width: 70; height: 30; background-color: rgb(153, 153, 153);" OnClick="var buf =picture.style.zIndex;picture.style.zIndex=picture2.style.zIndex; picture2.style.zIndex=buf "></div>
+&nbsp;<div class="text">
+    <main>
+       <h1 onMouseOver="changeStat()" onmouseout="change()">Москва</h1>
+        <p onMouseOver="style='color: rgb(138, 43, 226); font-weight: bold;'" onMouseOut="style='color: #000; font-weight: normal;'">История Москвы — крупнейшего города и столицы России — насчитывает, по крайней мере, 870 лет. Первое письменное упоминание о Москве относится к 1147 году. Москва, из-за своего положения на реке Москве, играла важную историческую роль как экономический и политический центр.</p>
+  
+        </details>&nbsp;<h2>Знаменательные события в XII - XVI вв.</h2>
+          <p onmouseover="changeParagraph2Style(this)" onmouseout="restoreParagraph2Style(this)" class="news"><span class="date">04.04.1147 - </span>Первое летописное упоминание о Москве</p>
+          <p class="news"><span class="date">1276 - </span>Образование самостоятельного Московского княжества</p>
+          <p class="news"><span class="date">1366 - </span>Начало строительства белокаменных стен Кремля</p>
+          <p class="news"><span class="date">19.04.1563 - </span>В Москве выходит первая печатная книга - Апостол</p>
+
+    
+<table border="1" width="600">
+        <tr>
+          <td onmouseover="applyAlternativeStyle(this)" onmouseout="restoreNormalStyle(this)">1</td>
+          <td onmouseover="applyAlternativeStyle(this)" onmouseout="restoreNormalStyle(this)">2</td>
+        </tr>
+        <tr>
+          <td onmouseover="applyAlternativeStyle(this)" onmouseout="restoreNormalStyle(this)">3</td>
+          <td onmouseover="applyAlternativeStyle(this)" onmouseout="restoreNormalStyle(this)">4</td>
+        </tr>
+</table>
+</main>
+  </div>
+<div><SCRIPT> document.write("Изменено " +document.lastModified) </SCRIPT> </div>
+<div><INPUT type="button" value="Window" style="position: relative; top: 50px; right:0px; width: 100px; height: 50px; background-color: rgb(138, 43, 226);" OnClick="WindStat()"></div>
+<div><INPUT type="button" value="Navigator" style="position: relative; top: 0px; right:-100px; width: 100px; height: 50px; background-color: rgb(123, 104, 238);" 
+OnClick=" alert('Тип браузера: '+ navigator.appCodeName + '\n' +
+                          'Название браузера: ' + navigator.appName + '\n' +
+                          'Версия браузера: ' + navigator.appVersion + '\n' +
+                          'Платформа: ' + navigator.platform + '\n' +
+                          'Язык браузера: ' + navigator.language + '\n');"></div>
+<div><INPUT type="button" value="Location" style="position: relative; top: 50px; right:0px; width: 100px; height: 50px; background-color: rgb(127, 255, 212);" 
+		     OnClick="alert('Имя пользователя: ' + window.navigator.userAgent + '\n' +
+                    'Адрес загруженного документа: ' + window.location.href);"></div>
+<div><INPUT type="button" value="Screen" style="position: relative; top: 0px; right:-100px; width: 100px; height: 50px; background-color: rgb(240, 230, 140);" OnClick="Scren()"></div>
+<script>
+    function WindStat() {
+     alert("Текущая строка состояния: " + window.status);
+     window.status = "WinStatus is " + Math.floor(Math.random()* 100);
+    }
+</script>
+<script>
+function Scren() {
+      var screenInfo = "Ширина: " + window.screen.width + "\n" +
+                       "Высота: " + window.screen.height + "\n" +
+                       "Глубина цвета: " + window.screen.colorDepth + "\n" +
+                       "Ориентация: " + (window.screen.orientation.type);
+      var isConfirmed = confirm("Информация о параметрах экрана:\n\n" + screenInfo);
+	if (isConfirmed) {
+        alert(screenInfo);}
+}
+</script>
+<script>
+    function change() {
+     window.status = "Продолжение работы";
+    }
+</script>
+<script>
+function changeParagraph2Style(element) {
+      element.style.marginRight = "3cm"; 
+      element.style.textIndent = "2.5cm"; 
+    }
+    function restoreParagraph2Style(element) {
+      element.style.marginRight = "";
+      element.style.textIndent = ""; 
+    }
+</script>
+ <script>
+    // Функция для применения альтернативного стиля при наведении мыши
+    function applyAlternativeStyle(cell) {
+      cell.className = "alternative";
+    }
+
+    // Функция для восстановления исходного стиля при отведении мыши
+    function restoreNormalStyle(cell) {
+      cell.className = "normal";
+    }
+  </script>
+</body>
+</html>
